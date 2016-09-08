@@ -6,9 +6,9 @@
 
 /**
  * Main method
- * @param  argc [description]
- * @param  argv [description]
- * @return      [description]
+ * @param  argc [number of command line arguments + 1]
+ * @param  argv [array of arguments]
+ * @return      [int]
  */
 int main(int argc, char *argv[]) {
   return 0;
