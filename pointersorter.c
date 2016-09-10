@@ -11,5 +11,6 @@
  * @return      [int]
  */
 int main(int argc, char *argv[]) {
-  return 0;
+	printf("Test statement\n");
+	return 0;
 }

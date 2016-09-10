@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g -Wall -pedantic -ansi -m32
+CFLAGS = -g -Wall -pedantic -ansi
 
 pointersorter : pointersorter.c
 	$(CC) $(CFLAGS) $^ -o $@ -lm
