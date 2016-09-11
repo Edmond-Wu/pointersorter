@@ -12,3 +12,10 @@ typedef struct Node {
 	struct Node *left;
 	struct Node *right;
 } Node;
+
+/**
+ * Method for creating a tree node
+ * @param  word [word to be stored in node]
+ * @return      [Node]
+ */
+Node* create_node(char *word);

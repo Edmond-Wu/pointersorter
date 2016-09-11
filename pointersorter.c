@@ -4,26 +4,10 @@
 #include <ctype.h>
 #include "pointersorter.h"
 
-
-char* lower_case(char *word) {
-	char *copy = malloc(1 + strlen(word));
-	if (copy) {
-		strcpy(copy, word);
-	}
-	else {
-		fprintf(stderr, "Malloc failure");
-	}
-	for (int i = 0; i < strlen(word); i++) {
-		copy[i] = tolower(word[i]);
-	}
-	return copy;
-}
-
 Node* create_node(char *word) {
 	Node *n;
 	n = malloc(sizeof(Node));
-	char *copy = lower_case(word);
-	n -> key = copy;
+	n -> key = word;
 	n -> left = NULL;
 	n -> right = NULL;
 	return n;
