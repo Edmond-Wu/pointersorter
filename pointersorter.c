@@ -38,7 +38,7 @@ void parse_input(char *input) {
 }
 
 /**
- * Main method
+ * Main function
  * @param  argc [number of command line arguments + 1]
  * @param  argv [array of arguments]
  * @return      [int]
