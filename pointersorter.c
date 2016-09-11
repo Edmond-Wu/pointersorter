@@ -6,17 +6,15 @@
 
 Node *root = NULL;
 
-//creates a node with a word as the key
 Node* create_node(char *word) {
-	Node *n;
-	n = malloc(sizeof(Node));
-	n -> key = word;
-	n -> left = NULL;
-	n -> right = NULL;
-	return n;
+	Node *node;
+	node = malloc(sizeof(Node));
+	node -> key = word;
+	node -> left = NULL;
+	node -> right = NULL;
+	return node;
 }
 
-//inserts a word into the tree
 void insert_word(char *word) {
 	if (root == NULL) {
 		root = create_node(word);
@@ -27,7 +25,6 @@ void insert_word(char *word) {
 	}
 }
 
-//parses an input string into words
 void parse_input(char *input) {
 	int length = strlen(input);
 	printf("Length of input: %d\n", length);
