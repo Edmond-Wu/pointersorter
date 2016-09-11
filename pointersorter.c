@@ -4,6 +4,9 @@
 #include <ctype.h>
 #include "pointersorter.h"
 
+Node *root = NULL;
+
+//creates a node with a word as the key
 Node* create_node(char *word) {
 	Node *n;
 	n = malloc(sizeof(Node));
@@ -11,6 +14,27 @@ Node* create_node(char *word) {
 	n -> left = NULL;
 	n -> right = NULL;
 	return n;
+}
+
+//inserts a word into the tree
+void insert_word(char *word) {
+	if (root == NULL) {
+		root = create_node(word);
+	}
+	else {
+		Node *pointer;
+		pointer = root;
+	}
+}
+
+//parses an input string into words
+void parse_input(char *input) {
+	int length = strlen(input);
+	printf("Length of input: %d\n", length);
+	for (int i = 0; i < length; i++) {
+		printf("%c ", input[i]);
+	}
+	printf("\n");
 }
 
 /**
@@ -25,12 +49,7 @@ int main(int argc, char *argv[]) {
 		fprintf(stderr, "ERROR: Invalid number of arguments; only 1 argument taken\n");
 	}
 	else {
-		int length = strlen(argv[1]);
-		Node *node;
-		node = create_node(argv[1]);
-		printf("Length of input: %d\n", length);
-		printf("Word: %s\n", node -> key);
-		free(node);
+		parse_input(argv[1]);
 	}
 	return 0;
 }
