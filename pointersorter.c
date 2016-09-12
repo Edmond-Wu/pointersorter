@@ -48,11 +48,12 @@ void parse_input(char *input) {
 					}
 				}
 			}
-			//segment[i] = '\0';
+			segment[i] = '\0';
 			non_letter_index = i;
 			printf("%s\n", segment);
 		}
 	}
+	//the last string after the last non-letter character
 	if (non_letter_index != length - 1) {
 		char *last_word;
 		last_word = malloc((length - non_letter_index - 1) * sizeof(char));
