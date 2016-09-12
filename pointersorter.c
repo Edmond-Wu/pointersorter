@@ -27,9 +27,21 @@ void insert_word(char *word) {
 
 void parse_input(char *input) {
 	int length = strlen(input);
+	int non_letter_index = 0;
 	printf("Length of input: %d\n", length);
 	for (int i = 0; i < length; i++) {
-		printf("%c ", input[i]);
+		char c = input[i];
+		if (!isalpha(c)) {
+			int difference = i - non_letter_index;
+			char *segment;
+			segment = malloc((1 + difference) * sizeof(char));
+			for (int j = non_letter_index; j < i; j++) {
+				segment[j - non_letter_index] = input[j];
+			}
+			segment[i] = "\0";
+			non_letter_index = i;
+			printf("%s\n", segment);
+		}
 	}
 	printf("\n");
 }
