@@ -25,6 +25,16 @@ void insert_word(char *word) {
 	}
 }
 
+char* get_substring(char *string, int start, int end) {
+	char *substring;
+	substring = malloc((end - start) * sizeof(char));
+	for (int i = start; i < end; i++) {
+		substring[i - start] = string[i];
+	}
+	substring[strlen(substring)] = '\0';
+	return substring;
+}
+
 void parse_input(char *input) {
 	int length = strlen(input);
 	int non_letter_index = 0;
@@ -33,22 +43,15 @@ void parse_input(char *input) {
 		char c = input[i];
 		//checks if it's not a letter
 		if (!isalpha(c)) {
-			int difference = i - non_letter_index;
 			char *segment;
-			segment = malloc((difference) * sizeof(char));
 			if (non_letter_index == 0) {
-				for (int j = 0; j < i; j++) {
-					segment[j] = input[j];
-				}
+				segment = get_substring(input, 0, i);
 			}
 			else {
-				if (non_letter_index + 1 != length) {	
-					for (int j = non_letter_index + 1; j < i; j++) {
-						segment[j - non_letter_index - 1] = input[j];
-					}
+				if (non_letter_index + 1 != length) {
+					segment = get_substring(input, non_letter_index + 1, i);
 				}
 			}
-			segment[i] = '\0';
 			non_letter_index = i;
 			printf("%s\n", segment);
 			insert_word(segment);
@@ -57,18 +60,11 @@ void parse_input(char *input) {
 	//the last string after the last non-letter character
 	if (non_letter_index != length - 1) {
 		char *last_word;
-		int starting_index;
-		if (non_letter_index == 0) {
-			starting_index = non_letter_index;
+		int starting_index = non_letter_index;
+		if (non_letter_index != 0) {
+			starting_index++;
 		}
-		else {
-			starting_index = non_letter_index + 1;
-		}
-		last_word = malloc((length - non_letter_index - 1) * sizeof(char));
-		for (int x = starting_index; x < length; x++) {
-			last_word[x - starting_index] = input[x];
-		}
-		last_word[strlen(last_word)] = '\0';
+		last_word = get_substring(input, starting_index, length);
 		printf("%s\n", last_word);
 	}		
 	printf("\n");
