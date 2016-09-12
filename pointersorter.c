@@ -36,22 +36,32 @@ void parse_input(char *input) {
 			int difference = i - non_letter_index;
 			char *segment;
 			segment = malloc((difference) * sizeof(char));
-			if (non_letter_index != 0) {
+			if (non_letter_index == 0) {
 				for (int j = 0; j < i; j++) {
 					segment[j] = input[j];
 				}
 			}
 			else {
-				
+				if (non_letter_index + 1 != length) {	
+					for (int j = non_letter_index + 1; j < i; j++) {
+						segment[j - non_letter_index - 1] = input[j];
+					}
+				}
 			}
-			for (int j = non_letter_index; j < i; j++) {
-				segment[j - non_letter_index] = input[j];
-			}
-			segment[i] = "\0";
+			//segment[i] = '\0';
 			non_letter_index = i;
 			printf("%s\n", segment);
 		}
 	}
+	if (non_letter_index != length - 1) {
+		char *last_word;
+		last_word = malloc((length - non_letter_index - 1) * sizeof(char));
+		for (int x = non_letter_index + 1; x < length; x++) {
+			last_word[x - non_letter_index - 1] = input[x];
+		}
+		last_word[strlen(last_word)] = '\0';
+		printf("%s\n", last_word);
+	}		
 	printf("\n");
 }
 
