@@ -31,10 +31,19 @@ void parse_input(char *input) {
 	printf("Length of input: %d\n", length);
 	for (int i = 0; i < length; i++) {
 		char c = input[i];
+		//checks if it's not a letter
 		if (!isalpha(c)) {
 			int difference = i - non_letter_index;
 			char *segment;
-			segment = malloc((1 + difference) * sizeof(char));
+			segment = malloc((difference) * sizeof(char));
+			if (non_letter_index != 0) {
+				for (int j = 0; j < i; j++) {
+					segment[j] = input[j];
+				}
+			}
+			else {
+				
+			}
 			for (int j = non_letter_index; j < i; j++) {
 				segment[j - non_letter_index] = input[j];
 			}
