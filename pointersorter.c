@@ -51,14 +51,22 @@ void parse_input(char *input) {
 			segment[i] = '\0';
 			non_letter_index = i;
 			printf("%s\n", segment);
+			insert_word(segment);
 		}
 	}
 	//the last string after the last non-letter character
 	if (non_letter_index != length - 1) {
 		char *last_word;
+		int starting_index;
+		if (non_letter_index == 0) {
+			starting_index = non_letter_index;
+		}
+		else {
+			starting_index = non_letter_index + 1;
+		}
 		last_word = malloc((length - non_letter_index - 1) * sizeof(char));
-		for (int x = non_letter_index + 1; x < length; x++) {
-			last_word[x - non_letter_index - 1] = input[x];
+		for (int x = starting_index; x < length; x++) {
+			last_word[x - starting_index] = input[x];
 		}
 		last_word[strlen(last_word)] = '\0';
 		printf("%s\n", last_word);
