@@ -27,6 +27,14 @@ Node* create_node(char *word);
 void insert_word(char *word);
 
 /**
+ * Function for retrieving a substring from an input string
+ * @param start [starting index in input string character array]
+ * @param end   [ending index]
+ * @return			[char*]
+ */
+char* get_substring(char *string, int start, int end);
+
+/**
  * Function to parse an input string into words
  * @param input [input to be parsed]
  */
