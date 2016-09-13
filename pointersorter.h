@@ -27,10 +27,16 @@ Node* create_node(char *word);
 void insert_word(char *word);
 
 /**
+ * Performs an in-order traversal of the tree
+ * @param rt [root to begin traversal]
+ */
+void in_order_traversal(Node *rt);
+
+/**
  * Function for retrieving a substring from an input string
  * @param start [starting index in input string character array]
  * @param end   [ending index]
- * @return			[char*]
+ * @return			[substring of the input determined by start and end indices]
  */
 char* get_substring(char *string, int start, int end);
 
