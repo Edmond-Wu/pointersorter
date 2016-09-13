@@ -3,10 +3,9 @@
 #include <string.h>
 #include <ctype.h>
 
-//defining boolean functionality
-typedef enum {true, false} bool;
-
-//struct for a binary tree node
+/**
+ * Defines a struct for a binary tree node
+ */
 typedef struct {
 	char *key;
 	struct Node *left;
