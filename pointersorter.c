@@ -55,6 +55,15 @@ void in_order_traversal(Node *rt) {
 	}
 }
 
+void destroy_tree(Node *rt) {
+	if (rt != NULL) {
+		destroy_tree(rt -> left);
+		destroy_tree(rt -> right);
+		free(rt -> key);
+		free(rt);
+	}
+}
+
 char* get_substring(char *string, int start, int end) {
 	char *substring;
 	substring = malloc((end - start) * sizeof(char));
@@ -68,7 +77,7 @@ char* get_substring(char *string, int start, int end) {
 void parse_input(char *input) {
 	int length = strlen(input);
 	int non_letter_index = 0;
-	printf("Length of input: %d\n", length);
+	//printf("Length of input: %d\n", length);
 	for (int i = 0; i < length; i++) {
 		char c = input[i];
 		//checks if it's not a letter
@@ -113,6 +122,7 @@ int main(int argc, char *argv[]) {
 	else {
 		parse_input(argv[1]);
 		in_order_traversal(root);
+		destroy_tree(root);
 	}
 	return 0;
 }
