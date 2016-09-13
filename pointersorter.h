@@ -15,7 +15,7 @@ typedef struct {
 /**
  * Function for creating a tree node
  * @param  word [word to be stored in node]
- * @return      [Node]
+ * @return [Node struct with the word as its key]
  */
 Node* create_node(char *word);
 
@@ -42,8 +42,8 @@ void destroy_tree(Node *rt);
 /**
  * Function for retrieving a substring from an input string
  * @param start [starting index in input string character array]
- * @param end   [ending index]
- * @return			[substring of the input determined by start and end indices]
+ * @param end [ending index]
+ * @return [substring of the input determined by start and end indices]
  */
 char* get_substring(char *string, int start, int end);
 
