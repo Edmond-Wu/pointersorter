@@ -33,6 +33,12 @@ void insert_word(char *word);
 void in_order_traversal(Node *rt);
 
 /**
+ * Frees the tree structure by performing a post-order traversal
+ * @param rt [root to be freed]
+ */
+void destroy_tree(Node *rt);
+
+/**
  * Function for retrieving a substring from an input string
  * @param start [starting index in input string character array]
  * @param end   [ending index]
