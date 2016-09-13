@@ -16,12 +16,46 @@ Node* create_node(char *word) {
 }
 
 void insert_word(char *word) {
+	//printf("%s\n", word);
 	if (root == NULL) {
 		root = create_node(word);
+		//printf("%s\n", root -> key);
+		return;
 	}
 	else {
+		Node *inserted;
+		inserted = create_node(word);
+		//printf("%s\n", inserted -> key);
 		Node *pointer;
 		pointer = root;
+		Node *parent;
+		while (pointer != NULL) {
+			parent = pointer;
+			int comparison = strcmp(inserted -> key, pointer -> key);
+			printf("%d\n", comparison);
+			if (comparison < 0) {
+				pointer = pointer -> left;
+				if (pointer == NULL) {
+					parent -> left = inserted;
+					return;
+				}
+			}
+			else {
+				pointer = pointer -> right;
+				if (pointer == NULL) {
+					parent -> right = inserted;
+					return;
+				}
+			}
+		}
+	}
+}
+
+void in_order_traversal(Node *rt) {
+	if (rt != NULL) {
+		in_order_traversal(rt -> left);
+		printf("%s\n", rt -> key);
+		in_order_traversal(rt -> right);
 	}
 }
 
@@ -53,7 +87,7 @@ void parse_input(char *input) {
 				}
 			}
 			non_letter_index = i;
-			printf("%s\n", segment);
+			//printf("%s\n", segment);
 			insert_word(segment);
 		}
 	}
@@ -65,7 +99,8 @@ void parse_input(char *input) {
 			starting_index++;
 		}
 		last_word = get_substring(input, starting_index, length);
-		printf("%s\n", last_word);
+		insert_word(last_word);
+		//printf("%s\n", last_word);
 	}		
 	printf("\n");
 }
@@ -83,6 +118,7 @@ int main(int argc, char *argv[]) {
 	}
 	else {
 		parse_input(argv[1]);
+		in_order_traversal(root);
 	}
 	return 0;
 }
