@@ -22,12 +22,14 @@ Node* create_node(char *word);
 
 /**
  * Function to insert a word into the tree structure
+ * Inserts in alphabetical ASCII order (capital letters take priority)
  * @param word [word to be inserted]
  */
 void insert_word(char *word);
 
 /**
  * Performs an in-order traversal of the tree
+ * Prints out the keys of the nodes in alphabetical ASCII order (capital letters take priority)
  * @param rt [root to begin traversal]
  */
 void in_order_traversal(Node *rt);
