@@ -7,7 +7,7 @@
 typedef enum {true, false} bool;
 
 //struct for a binary tree node
-typedef struct Node {
+typedef struct {
 	char *key;
 	struct Node *left;
 	struct Node *right;
