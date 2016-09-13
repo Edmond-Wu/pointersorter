@@ -67,7 +67,8 @@ void destroy_tree(Node *rt) {
 char* get_substring(char *string, int start, int end) {
 	char *substring;
 	substring = malloc((end - start) * sizeof(char));
-	for (int i = start; i < end; i++) {
+	int i;
+	for (i = start; i < end; i++) {
 		substring[i - start] = string[i];
 	}
 	substring[strlen(substring)] = '\0';
@@ -77,10 +78,11 @@ char* get_substring(char *string, int start, int end) {
 void parse_input(char *input) {
 	int length = strlen(input);
 	int non_letter_index = 0;
-	//printf("Length of input: %d\n", length);
-	for (int i = 0; i < length; i++) {
+	/*printf("Length of input: %d\n", length);*/
+	int i;
+	for (i = 0; i < length; i++) {
 		char c = input[i];
-		//checks if it's not a letter
+		/*checks if it's not a letter*/
 		if (!isalpha(c)) {
 			char *segment;
 			if (non_letter_index == 0) {
@@ -95,7 +97,7 @@ void parse_input(char *input) {
 			insert_word(segment);
 		}
 	}
-	//the last string after the last non-letter character
+	/*the last string after the last non-letter character*/
 	if (non_letter_index != length - 1) {
 		char *last_word;
 		int starting_index = non_letter_index;
@@ -115,7 +117,7 @@ void parse_input(char *input) {
  * @return      [int]
  */
 int main(int argc, char *argv[]) {
-	//checking for valid number of arguments
+	/*checking for valid number of arguments*/
 	if (argc != 2) {
 		fprintf(stderr, "ERROR: Invalid number of arguments; only 1 argument taken\n");
 	}
