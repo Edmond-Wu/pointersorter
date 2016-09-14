@@ -6,7 +6,7 @@
 /**
  * Defines a struct for a binary tree node
  */
-typedef struct {
+typedef struct Node {
 	char *key;
 	struct Node *left;
 	struct Node *right;

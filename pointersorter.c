@@ -78,7 +78,6 @@ char* get_substring(char *string, int start, int end) {
 void parse_input(char *input) {
 	int length = strlen(input);
 	int non_letter_index = 0;
-	/*printf("Length of input: %d\n", length);*/
 	int i;
 	for (i = 0; i < length; i++) {
 		char c = input[i];
@@ -97,7 +96,7 @@ void parse_input(char *input) {
 			insert_word(segment);
 		}
 	}
-	/*the last string after the last non-letter character*/
+	/*adds the last string after the last non-letter character*/
 	if (non_letter_index != length - 1) {
 		char *last_word;
 		int starting_index = non_letter_index;
@@ -107,7 +106,6 @@ void parse_input(char *input) {
 		last_word = get_substring(input, starting_index, length);
 		insert_word(last_word);
 	}		
-	printf("\n");
 }
 
 /**
