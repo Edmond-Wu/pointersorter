@@ -82,7 +82,7 @@ void parse_input(char *input) {
 	for (i = 0; i < length; i++) {
 		char c = input[i];
 		/*checks if it's not a letter*/
-		if (!isalpha(c)) {
+		if (c == '$' || !isalpha(c)) {
 			char *segment;
 			if (non_letter_index == 0) {
 				segment = get_substring(input, 0, i);
@@ -93,8 +93,11 @@ void parse_input(char *input) {
 				}
 			}
 			non_letter_index = i;
-			insert_word(segment);
+			if (strlen(segment) > 0) {
+				insert_word(segment);
+			}
 		}
+			
 	}
 	/*adds the last string after the last non-letter character*/
 	if (non_letter_index != length - 1) {
@@ -104,7 +107,9 @@ void parse_input(char *input) {
 			starting_index++;
 		}
 		last_word = get_substring(input, starting_index, length);
-		insert_word(last_word);
+		if (strlen(last_word) > 0) {
+			insert_word(last_word);
+		}
 	}		
 }
 
