@@ -82,7 +82,7 @@ void parse_input(char *input) {
 	for (i = 0; i < length; i++) {
 		char c = input[i];
 		/*checks if it's not a letter*/
-		if (c == '$' || !isalpha(c)) {
+		if (!isalpha(c)) {
 			char *segment;
 			if (non_letter_index == 0) {
 				segment = get_substring(input, 0, i);
@@ -110,7 +110,7 @@ void parse_input(char *input) {
 		if (strlen(last_word) > 0) {
 			insert_word(last_word);
 		}
-	}		
+	}
 }
 
 /**
@@ -125,6 +125,8 @@ int main(int argc, char *argv[]) {
 		fprintf(stderr, "ERROR: Invalid number of arguments; only 1 argument taken\n");
 	}
 	else {
+		int length = strlen(argv[1]);
+		printf("Length of input: %d\n", length);
 		parse_input(argv[1]);
 		in_order_traversal(root);
 		destroy_tree(root);
