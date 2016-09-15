@@ -66,12 +66,13 @@ void destroy_tree(Node *rt) {
 
 char* get_substring(char *string, int start, int end) {
 	char *substring;
-	substring = malloc((end - start) * sizeof(char));
+	int difference = end - start;
+	substring = malloc((difference + 1) * sizeof(char));
 	int i;
 	for (i = start; i < end; i++) {
 		substring[i - start] = string[i];
 	}
-	substring[strlen(substring)] = '\0';
+	substring[difference] = '\0';
 	return substring;
 }
 
