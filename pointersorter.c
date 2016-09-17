@@ -78,7 +78,20 @@ char* get_substring(char *string, int start, int end) {
 
 void parse_input(char *input) {
 	int length = strlen(input);
+	if (length == 0) {
+		return;
+	}
+	else if (length == 1) {
+		if (isalpha(input[0])) {
+			insert_word(input);
+			return;
+		}
+	}
 	int non_letter_index = 0;
+	char y = input[0];
+	if (!isalpha(y)) {
+		non_letter_index = 1;
+	}
 	int i;
 	for (i = 0; i < length; i++) {
 		char c = input[i];
@@ -104,7 +117,7 @@ void parse_input(char *input) {
 	if (non_letter_index != length - 1) {
 		char *last_word;
 		int starting_index = non_letter_index;
-		if (non_letter_index != 0) {
+		if (starting_index != 0) {
 			starting_index++;
 		}
 		last_word = get_substring(input, starting_index, length);
