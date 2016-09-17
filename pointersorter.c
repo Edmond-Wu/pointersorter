@@ -28,6 +28,7 @@ void insert_word(char *word) {
 		Node *parent;
 		while (pointer != NULL) {
 			parent = pointer;
+			/*compare by alphabetical ASCII order*/
 			int comparison = strcmp(inserted -> key, pointer -> key);
 			if (comparison < 0) {
 				pointer = pointer -> left;
@@ -78,15 +79,6 @@ char* get_substring(char *string, int start, int end) {
 
 void parse_input(char *input) {
 	int length = strlen(input);
-	if (length == 0) {
-		return;
-	}
-	else if (length == 1) {
-		if (isalpha(input[0])) {
-			insert_word(input);
-			return;
-		}
-	}
 	int non_letter_index = 0;
 	int i;
 	for (i = 0; i < length; i++) {
@@ -127,7 +119,7 @@ void parse_input(char *input) {
 int main(int argc, char *argv[]) {
 	/*checking for valid number of arguments*/
 	if (argc != 2) {
-		fprintf(stderr, "ERROR: Invalid number of arguments; only 1 argument taken\n");
+		fprintf(stderr, "ERROR: Invalid number of arguments; only 1 argument required\n");
 	}
 	else {
 		parse_input(argv[1]);
