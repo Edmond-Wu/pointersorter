@@ -1,0 +1,88 @@
+/* Assignment 0: pointersorter testcases
+ * Group: Toni Au, Edmond Wu
+ *
+ * IMPORTANT! ALL INPUT MUST BE ENTERED WITH SINGLE QUOTES (or properly escaped if using double quotes)
+ */
+
+Test Case 1
+
+Input:
+Output: ERROR: Invalid number of arguments; only 1 argument taken
+
+Test Case 2
+
+Input: 'The quick brown fox jumps over the lazy dog'
+Output:
+The
+brown
+dog
+fox
+jumps
+lazy
+over
+quick
+the
+
+
+Test Case 3
+
+Input: 'The1QUICK11bRoWn238fox0jumps9over3the4lazy5dog'
+Output:
+QUICK
+The
+bRoWn
+dog
+fox
+jumps
+lazy
+over
+the
+
+
+Test Case 4
+
+Input: '!The@@quick##brown$$fox%jumps%JUMPS^&*()_+over[]\{}|the,./<>?lazy dog!'
+Output:
+JUMPS
+The
+brown
+dog
+fox
+jumps
+lazy
+over
+quick
+the
+
+
+Test Case 5
+
+Input: The THE quick QUICK brown BROWN fox FOX jump Jumps JUMPS over the lazy dog
+Output:
+BROWN
+FOX
+JUMPS
+Jumps
+QUICK
+THE
+The
+brown
+dog
+fox
+jump
+lazy
+over
+quick
+the
+
+
+Test Case 6
+
+Input: Thequickbrownfoxjumpsoverthelazydog
+Output: Thequickbrownfoxjumpsoverthelazydog
+
+Test Case 7
+
+Input: !hello
+Output: hello
+
