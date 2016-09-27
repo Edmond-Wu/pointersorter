@@ -70,9 +70,8 @@ char* get_substring(char *string, int start, int end) {
 	int difference = end - start;
 	substring = malloc((difference + 1) * sizeof(char));
 	int i;
-	for (i = start; i < end; i++) {
+	for (i = start; i < end; i++)
 		substring[i - start] = string[i];
-	}
 	substring[difference] = '\0';
 	return substring;
 }
@@ -86,28 +85,23 @@ void parse_input(char *input) {
 		/*checks if it's not a letter*/
 		if (!isalpha(c)) {
 			char *segment;
-			if (non_letter_index <= 1 && isalpha(input[non_letter_index])) {
+			if (non_letter_index <= 1 && isalpha(input[non_letter_index]))
 				segment = get_substring(input, non_letter_index, i);
-			}
-			else {
+			else
 				segment = get_substring(input, non_letter_index + 1, i);
-			}
 			non_letter_index = i;
-			if (strlen(segment) > 0) {
+			if (strlen(segment) > 0)
 				insert_word(segment);
-			}
 		}
 			
 	}
 	/*adds the last string after the last non-letter character*/
 	char *last_word;
-	if (!isalpha(input[non_letter_index])) {
+	if (!isalpha(input[non_letter_index]))
 		non_letter_index++;
-	}
 	last_word = get_substring(input, non_letter_index, length);
-	if (strlen(last_word) > 0) {
+	if (strlen(last_word) > 0)
 		insert_word(last_word);
-	}
 }
 
 /**
@@ -118,9 +112,8 @@ void parse_input(char *input) {
  */
 int main(int argc, char *argv[]) {
 	/*checking for valid number of arguments*/
-	if (argc != 2) {
+	if (argc != 2)
 		fprintf(stderr, "ERROR: Invalid number of arguments; only 1 argument required\n");
-	}
 	else {
 		parse_input(argv[1]);
 		in_order_traversal(root);
