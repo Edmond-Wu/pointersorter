@@ -7,11 +7,10 @@
 Node *root = NULL;
 
 Node* create_node(char *word) {
-	Node *node;
-	node = malloc(sizeof(Node));
-	node -> key = word;
-	node -> left = NULL;
-	node -> right = NULL;
+	Node *node = malloc(sizeof(Node));
+	node->key = word;
+	node->left = NULL;
+	node->right = NULL;
 	return node;
 }
 
@@ -21,26 +20,24 @@ void insert_word(char *word) {
 		return;
 	}
 	else {
-		Node *inserted;
-		inserted = create_node(word);
-		Node *pointer;
-		pointer = root;
+		Node *inserted = create_node(word);
+		Node *pointer = root;
 		Node *parent;
 		while (pointer != NULL) {
 			parent = pointer;
 			/*compare by alphabetical ASCII order*/
-			int comparison = strcmp(inserted -> key, pointer -> key);
+			int comparison = strcmp(inserted->key, pointer->key);
 			if (comparison < 0) {
-				pointer = pointer -> left;
+				pointer = pointer->left;
 				if (pointer == NULL) {
-					parent -> left = inserted;
+					parent->left = inserted;
 					return;
 				}
 			}
 			else {
-				pointer = pointer -> right;
+				pointer = pointer->right;
 				if (pointer == NULL) {
-					parent -> right = inserted;
+					parent->right = inserted;
 					return;
 				}
 			}
@@ -50,25 +47,24 @@ void insert_word(char *word) {
 
 void in_order_traversal(Node *rt) {
 	if (rt != NULL) {
-		in_order_traversal(rt -> left);
-		printf("%s\n", rt -> key);
-		in_order_traversal(rt -> right);
+		in_order_traversal(rt->left);
+		printf("%s\n", rt->key);
+		in_order_traversal(rt->right);
 	}
 }
 
 void destroy_tree(Node *rt) {
 	if (rt != NULL) {
-		destroy_tree(rt -> left);
-		destroy_tree(rt -> right);
-		free(rt -> key);
+		destroy_tree(rt->left);
+		destroy_tree(rt->right);
+		free(rt->key);
 		free(rt);
 	}
 }
 
 char* get_substring(char *string, int start, int end) {
-	char *substring;
 	int difference = end - start;
-	substring = malloc((difference + 1) * sizeof(char));
+	char *substring = malloc((difference + 1) * sizeof(char));
 	int i;
 	for (i = start; i < end; i++)
 		substring[i - start] = string[i];
