@@ -6,7 +6,7 @@ DEPS = pointersorter.h
 all: pointersorter
 	rm *.o
 
-pointersorter : $(OBJS)
+pointersorter: $(OBJS)
 	$(CC) $(CFLAGS) $^ -o pointersorter
 
 pointersorter.o: pointersorter.c pointersorter.h
